@@ -1,0 +1,20 @@
+yaml<br />
+resources:<br />
+– name: my-vm<br />
+  type: compute.v1.instance<br />
+  properties:<br />
+    zone: us-central1-a<br />
+    machineType: zones/us-central1-a/machineTypes/n1-standard-1<br />
+    disks:<br />
+    – deviceName: boot<br />
+      type: PERSISTENT<br />
+      boot: true<br />
+      autoDelete: true<br />
+      initializeParams:<br />
+        diskSizeGb: 10<br />
+        sourceImage: projects/debian-cloud/global/images/family/debian-10<br />
+    networkInterfaces:<br />
+    – network: global/networks/default<br />
+      accessConfigs:<br />
+      – name: External NAT<br />
+        type: ONE_TO_ONE_NAT<br />
